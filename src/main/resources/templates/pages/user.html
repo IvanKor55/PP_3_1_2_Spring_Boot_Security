@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="ru">
+<head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+    <title>User</title>
+</head>
+<body>
+<div>
+    <form th:object="${user}">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" th:field="*{firstName}" readonly="readonly" />
+        <br/>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" th:field="*{lastName}" readonly="readonly" />
+        <br/>
+        <label for="age">Age:</label>
+        <input type="text" id="age" th:field="*{age}" readonly="readonly" />
+    </form>
+    <br/>
+    <a th:href="@{/edit(id=${user.getId()})}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <br/>
+    <div class="row" sec:authorize="hasRole('ROLE_ADMIN')">
+    <a th:href="@{/delete(id=${user.getId()})}">Delete</a></div>
+</div>
+<br/>
+<br/>
+<form th:action="@{/logout}" th:method="POST">
+    <input type="submit" value="Выйти из кабинета">
+</form>
+</body>
+</html>
