@@ -43,8 +43,7 @@ public class UserDaoImpl implements UserDao {
         try {
             Query<User> query = (Query<User>) entityManager.createQuery(FIND_USER_BY_LOGIN, User.class)
                     .setParameter("login", login);
-            User user = query.setMaxResults(1).getSingleResult();
-            return user;
+            return query.setMaxResults(1).getSingleResult();
         } catch (NoResultException e) {
             System.out.println("NoResultException" + e);
             return null;

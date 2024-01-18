@@ -33,8 +33,7 @@ public class RoleDaoImpl implements RoleDao {
         try {
             Query<Role> query = (Query<Role>) entityManager.createQuery(FIND_ROLE_BY_NAME, Role.class)
                     .setParameter("authority", authority);
-            Role role = query.setMaxResults(1).getSingleResult();
-            return role;
+            return query.setMaxResults(1).getSingleResult();
         } catch (NoResultException e) {
             System.out.println("NoResultException" + e);
             return null;
