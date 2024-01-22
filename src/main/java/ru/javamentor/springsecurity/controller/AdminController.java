@@ -4,51 +4,55 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import ru.javamentor.springsecurity.dao.RoleDao;
+import ru.javamentor.springsecurity.model.Role;
 import ru.javamentor.springsecurity.model.User;
 import ru.javamentor.springsecurity.service.UserService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping(value = "/")
-    public String index() {
-        return "index";
-    }
+    @Autowired
+    private RoleDao roleDao;
 
     @GetMapping(value = "/admin")
     public String getListUsers(ModelMap model) {
         model.addAttribute("users",userService.getListUsers());
-        return "pages/admin";
+        return "pages/admin/admin";
     }
 
     @GetMapping("/new")
     public String newUser(@ModelAttribute("user") User user) {
-        return "pages/new";
+        return "pages/admin/new";
     }
 
     @PostMapping("/new")
     public String create(@ModelAttribute("user") User user) {
+        List<Role> roleList = new ArrayList<>();
+        roleList.add(roleDao.getRoleByName("ROLE_USER"));
+        user.setRoles(roleList);
         userService.addUser(user);
-        return "redirect:/admin";
+        return "redirect:/admin/admin";
     }
 
     @GetMapping("/delete")
-    public String deleteUser(Model model, @RequestParam(value = "id", required = false) Integer id,
+    public String deleteUser(Model model, @RequestParam(value = "id", required = false) Long id,
                              @ModelAttribute("user") User user) {
         model.addAttribute("user",userService.getUser(id));
-        return "pages/delete";
+        return "pages/admin/delete";
     }
 
     @PostMapping("/delete")
     public String delete(@ModelAttribute("user") User user) {
         userService.deleteUser(user);
-        return "redirect:/admin";
+        return "redirect:/admin/admin";
     }
 }

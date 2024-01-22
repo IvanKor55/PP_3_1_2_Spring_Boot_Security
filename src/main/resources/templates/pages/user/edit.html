@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <html lang="ru">
 <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
     <title>Edit user</title>
 </head>
 <body>
-<form th:method="post" th:action="@{/edit}" th:object="${user}">
+<!--<form th:method="POST" th:action="@{/user/edit(id=${editUser.getId()})}" th:object="${user}">-->
+<form th:method="post" th:action="@{/user/edit}" th:object="${user}">
     <input type="hidden" th:field="*{id}" />
     <input type="hidden" th:field="*{login}" />
     <input type="hidden" th:field="*{password}" />
@@ -18,6 +20,14 @@
     <br/>
     <label for="age">Age:</label>
     <input type="text" th:field="*{age}" id="age"/>
+    <br>
+    <label for="role1">Role</label>
+    <input type="text" id="role1"
+           th:each="roles : ${user.getRoles()}"
+           th:value="${roles.getAuthority().replace('ROLE_', '')}"
+           name="rolesList"
+           th:readonly="${not #authorization.expression('hasRole(''ROLE_ADMIN'')')}"
+    />
     <br/>
     <br/>
     <label>Save</label>

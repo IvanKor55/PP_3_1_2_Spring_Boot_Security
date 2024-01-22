@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.javamentor.springsecurity.dao.RoleDao;
 import ru.javamentor.springsecurity.model.Role;
+
+import java.util.List;
+
 @Service
 public class RoleServiceImpl implements RoleService {
 
@@ -25,5 +28,15 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public Role getRole(Long id) {
         return roleDao.getRole(id);
+    }
+
+    @Override
+    public Role getRoleByName(String authority) {
+        return roleDao.getRoleByName(authority);
+    }
+
+    @Override
+    public List<Role> getListRoles (Long id) {
+        return roleDao.getListRoles(id);
     }
 }

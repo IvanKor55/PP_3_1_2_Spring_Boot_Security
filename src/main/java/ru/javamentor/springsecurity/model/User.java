@@ -22,7 +22,8 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE},
+            fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -101,6 +102,7 @@ public class User {
                 ", age=" + age +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
+                ", role=" + roles +
                 '}';
     }
 }

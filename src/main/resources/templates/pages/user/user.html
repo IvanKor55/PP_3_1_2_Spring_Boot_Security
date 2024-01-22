@@ -19,10 +19,11 @@
         <input type="text" id="age" th:field="*{age}" readonly="readonly" />
     </form>
     <br/>
-    <a th:href="@{/edit(id=${user.getId()})}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a th:href="@{/user/edit(id=${user.getId()})}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <br/>
     <div class="row" sec:authorize="hasRole('ROLE_ADMIN')">
-    <a th:href="@{/delete(id=${user.getId()})}">Delete</a></div>
+        <a th:href="@{/admin/delete(id=${user.getId()})}">Delete</a>
+    </div>
 </div>
 <br/>
 <br/>

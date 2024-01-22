@@ -8,13 +8,13 @@
 <body>
 <div>
     <th:block th:each="user : ${users}">
-        <a th:href="@{/user(id=${user.getId()})}"
+        <a th:href="@{/user/user(id=${user.getId()})}"
            th:text="${user.getFirstName() + ', ' + user.getLastName() + ', ' + user.getAge()}">user</a>
         <br/>
     </th:block>
 </div>
 <br/>
-<a href="/new">Create new user</a>
+<a href="/admin/new">Create new user</a>
 <br/>
 <br/>
 <form th:action="@{/logout}" th:method="POST">

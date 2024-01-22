@@ -3,11 +3,10 @@
 <html lang="ru">
 <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>Edit user</title>
+    <title>Enter user</title>
 </head>
 <body>
-<form th:method="post" th:action="@{/delete}" th:object="${user}">
-    <input type="hidden" th:field="*{id}" />
+<form th:method="post" th:action="@{/admin/new}" th:object="${user}">
     <label for="name">First Name:</label>
     <input type="text" th:field="*{firstName}" id="name"/>
     <br/>
@@ -18,8 +17,8 @@
     <input type="text" th:field="*{age}" id="age"/>
     <br/>
     <br/>
-    <label>Delete</label>
-    <input type="submit" value="Confirmation delete"/>
+    <label>Save</label>
+    <input type="submit" value="Create"/>
 </form>
 <br/>
 <br/>
