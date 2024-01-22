@@ -1,5 +1,4 @@
 package ru.javamentor.springsecurity.service;
-import ru.javamentor.springsecurity.model.Role;
 import ru.javamentor.springsecurity.model.User;
 
 import java.util.List;

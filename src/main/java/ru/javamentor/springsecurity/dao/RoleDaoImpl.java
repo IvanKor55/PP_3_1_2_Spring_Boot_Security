@@ -6,7 +6,6 @@ import jakarta.persistence.PersistenceContext;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import ru.javamentor.springsecurity.model.Role;
-import ru.javamentor.springsecurity.model.User;
 
 import java.util.List;
 
