@@ -23,15 +23,15 @@ public class AdminController {
     @Autowired
     private RoleDao roleDao;
 
-    @GetMapping(value = "/admin")
+    @GetMapping(value = "")
     public String getListUsers(ModelMap model) {
         model.addAttribute("users",userService.getListUsers());
-        return "pages/admin/admin";
+        return "pages/admin";
     }
 
     @GetMapping("/new")
     public String newUser(@ModelAttribute("user") User user) {
-        return "pages/admin/new";
+        return "pages/new";
     }
 
     @PostMapping("/new")
@@ -40,19 +40,19 @@ public class AdminController {
         roleList.add(roleDao.getRoleByName("ROLE_USER"));
         user.setRoles(roleList);
         userService.addUser(user);
-        return "redirect:/admin/admin";
+        return "redirect:/admin";
     }
 
     @GetMapping("/delete")
     public String deleteUser(Model model, @RequestParam(value = "id", required = false) Long id,
                              @ModelAttribute("user") User user) {
         model.addAttribute("user",userService.getUser(id));
-        return "pages/admin/delete";
+        return "pages/delete";
     }
 
     @PostMapping("/delete")
     public String delete(@ModelAttribute("user") User user) {
         userService.deleteUser(user);
-        return "redirect:/admin/admin";
+        return "redirect:/admin";
     }
 }

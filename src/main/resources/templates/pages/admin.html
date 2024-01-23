@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<html lang="ru">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+    <meta charset="UTF-8">
     <title>All users</title>
 </head>
 <body>
 <div>
     <th:block th:each="user : ${users}">
-        <a th:href="@{/user/user(id=${user.getId()})}"
+        <a th:href="@{/user(id=${user.getId()})}"
            th:text="${user.getFirstName() + ', ' + user.getLastName() + ', ' + user.getAge()}">user</a>
         <br/>
     </th:block>
 </div>
-<br/>
+<br>
 <a href="/admin/new">Create new user</a>
-<br/>
-<br/>
+<br>
+<br>
 <form th:action="@{/logout}" th:method="POST">
     <input type="submit" value="Выйти из кабинета">
 </form>

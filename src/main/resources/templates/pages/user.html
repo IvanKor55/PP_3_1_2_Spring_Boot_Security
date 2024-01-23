@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<html lang="ru">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+    <meta charset="UTF-8">
     <title>User</title>
 </head>
 <body>
@@ -25,8 +24,8 @@
         <a th:href="@{/admin/delete(id=${user.getId()})}">Delete</a>
     </div>
 </div>
-<br/>
-<br/>
+<br>
+<br>
 <form th:action="@{/logout}" th:method="POST">
     <input type="submit" value="Выйти из кабинета">
 </form>

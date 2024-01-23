@@ -25,17 +25,17 @@ public class UsersController {
     @Autowired
     private RoleService roleService;
 
-    @GetMapping(value = "/user")
+    @GetMapping(value = "")
     public String getUser(Model model, @RequestParam(value = "id", required = false) Long id) {
         model.addAttribute("user",userService.getUser(id));
-        return "pages/user/user";
+        return "pages/user";
     }
 
     @GetMapping("/edit")
     public String editUser(Model model, @RequestParam(value = "id", required = false) Long id) {
         model.addAttribute("user",userService.getUser(id));
         model.addAttribute("roles",roleService.getListRoles(id));
-        return "pages/user/edit";
+        return "pages/edit";
     }
 
     @PostMapping("/edit")
@@ -56,9 +56,9 @@ public class UsersController {
         }
         userService.editUser(user);
         if (getLooginRole().equals("ROLE_ADMIN")) {
-            return "redirect:/admin/admin";
+            return "redirect:/admin";
         } else {
-            return "redirect:/user/user?id=" + user.getId();
+            return "redirect:/user?id=" + user.getId();
         }
     }
 }

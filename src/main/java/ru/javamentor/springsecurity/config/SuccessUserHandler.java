@@ -43,11 +43,11 @@ public class SuccessUserHandler implements AuthenticationSuccessHandler {
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         if (roles.contains("ROLE_ADMIN")) {
             looginRole = "ROLE_ADMIN";
-            return "/admin/admin";
+            return "/admin";
         } else if (roles.contains("ROLE_USER")) {
             looginRole = "ROLE_USER";
             User user = userService.findByLogin(authentication.getName());
-            return ("/user/user?id=" + user.getId());
+            return ("/user?id=" + user.getId());
         }
         throw new IllegalStateException();
     }
