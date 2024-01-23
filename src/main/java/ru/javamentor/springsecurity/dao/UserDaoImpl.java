@@ -13,7 +13,6 @@ import java.util.List;
 public class UserDaoImpl implements UserDao {
     private static final String LIST_USER = "SELECT u FROM User u";
     private static final String FIND_USER_BY_LOGIN = "SELECT u FROM User u WHERE login =:login";
-    private static final String FIND_USER_BY_ID = "SELECT u FROM User u WHERE id =:id";
     @PersistenceContext
     private EntityManager entityManager;
 
