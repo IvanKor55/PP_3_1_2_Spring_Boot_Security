@@ -12,10 +12,15 @@ import ru.javamentor.springsecurity.util.UserValidator;
 @Controller
 public class AuthCntroller {
 
-    @Autowired
     private RegistrationService registrationService;
-    @Autowired
+
     private UserValidator userValidator;
+
+    @Autowired
+    public AuthCntroller(RegistrationService registrationService, UserValidator userValidator) {
+        this.registrationService = registrationService;
+        this.userValidator = userValidator;
+    }
 
     @GetMapping ("/login")
     public String loginPage() {

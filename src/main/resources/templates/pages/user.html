@@ -17,10 +17,10 @@
         <label for="age">Age:</label>
         <input type="text" id="age" th:field="*{age}" readonly="readonly" />
     </form>
-    <br/>
-    <a th:href="@{/user/edit(id=${user.getId()})}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <br/>
+    <br>
     <div class="row" sec:authorize="hasRole('ROLE_ADMIN')">
+        <a th:href="@{/admin/edit(id=${user.getId()})}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br>
         <a th:href="@{/admin/delete(id=${user.getId()})}">Delete</a>
     </div>
 </div>

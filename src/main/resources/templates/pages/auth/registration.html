@@ -1,20 +1,29 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+    <meta charset="UTF-8">
     <title>Registration</title>
 </head>
 <body>
 <form th:method="POST" th:action="@{/registration}" th:object="${user}">
-    <label for="login">Введите логин: </label>
+    <label for="fname">First name: </label>
+    <input type="text" th:field="*{firstName}" id="fname"/>
+    <br>
+    <label for="lname">Last name: </label>
+    <input type="text" th:field="*{lastName}" id="lname"/>
+    <br>
+    <label for="age">Age: </label>
+    <input type="text" th:field="*{age}" id="age"/>
+    <br>
+    <label for="login">Login: </label>
     <input type="text" th:field="*{login}" id="login"/>
     <div style="color:red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Login Error</div>
-    <br/>
-    <label for="password">Введите пароль: </label>
+    <br>
+    <label for="password">Password: </label>
     <input type="password" th:field="*{password}" id="password"/>
     <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
-    <br/>
-    <input type="submit" value="Регистрация"/>
+    <br>
+    <input type="submit" value="Registration"/>
 </form>
 </body>
 </html>

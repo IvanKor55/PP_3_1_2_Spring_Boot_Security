@@ -9,8 +9,14 @@ import ru.javamentor.springsecurity.model.User;
 
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
-    @Autowired
+
     private UserService userService;
+
+    @Autowired
+    public UserDetailServiceImpl(UserService userService) {
+        this.userService = userService;
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userService.findByLogin(username);

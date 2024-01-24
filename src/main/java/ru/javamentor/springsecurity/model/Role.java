@@ -21,10 +21,12 @@ public class Role implements GrantedAuthority {
     public Long getId() {
         return id;
     }
+
     @Override
     public String getAuthority() {
         return this.Authority;
     }
+
     public void setAuthority(String authority) {
         Authority = authority;
     }

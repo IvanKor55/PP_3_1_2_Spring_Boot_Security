@@ -11,14 +11,19 @@ import java.util.List;
 @Service
 public class RoleServiceImpl implements RoleService {
 
-    @Autowired
     private RoleDao roleDao;
+
+    @Autowired
+    public RoleServiceImpl(RoleDao roleDao) {
+        this.roleDao = roleDao;
+    }
 
     @Transactional
     @Override
     public void addRole(Role role) {
         roleDao.addRole(role);
     }
+
     @Transactional
     @Override
     public void deleteRole(Role role) {

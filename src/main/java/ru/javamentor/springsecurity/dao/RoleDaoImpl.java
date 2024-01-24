@@ -11,11 +11,14 @@ import java.util.List;
 
 @Repository
 public class RoleDaoImpl implements RoleDao {
+
     private static final String LIST_ROLES = "SELECT r FROM Role r left join fetch r.user u where u.id = :id";
+
     private static final String FIND_ROLE_BY_NAME = "SELECT r FROM Role r WHERE Authority =:authority";
 
     @PersistenceContext
     private EntityManager entityManager;
+
     @Override
     public void addRole(Role role) {
         entityManager.persist(role);
@@ -32,7 +35,6 @@ public class RoleDaoImpl implements RoleDao {
                 .setParameter("id", id);
         return query.getResultList();
     }
-
 
     @Override
     public Role getRole(Long id) {

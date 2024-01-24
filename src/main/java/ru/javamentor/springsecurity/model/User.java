@@ -11,14 +11,19 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "name")
     private String firstName;
+
     @Column(name = "last_name")
     private String lastName;
+
     @Column(name = "age")
     private int age;
+
     @Column(name = "login")
     private String login;
+
     @Column(name = "password")
     private String password;
 
@@ -92,17 +97,17 @@ public class User {
         this.roles = roles;
     }
 
-//    @Override
-//    public String toString() {
-//        return "User{" +
-//                "id=" + id +
-//                ", firstName='" + firstName + '\'' +
-//                ", lastName='" + lastName + '\'' +
-//                ", age=" + age +
-//                ", login='" + login + '\'' +
-//                ", password='" + password + '\'' +
-//                ", role=" + roles +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + roles +
+                '}';
+    }
 }
 

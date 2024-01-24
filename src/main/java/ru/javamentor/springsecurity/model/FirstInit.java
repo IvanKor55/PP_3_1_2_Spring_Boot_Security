@@ -8,6 +8,7 @@ import ru.javamentor.springsecurity.service.RoleService;
 public class FirstInit implements CommandLineRunner {
 
     private RoleService roleService;
+
     public FirstInit(RoleService roleService) {
         this.roleService = roleService;
     }

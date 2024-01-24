@@ -11,8 +11,11 @@ import java.util.List;
 
 @Repository
 public class UserDaoImpl implements UserDao {
+
     private static final String LIST_USER = "SELECT u FROM User u";
+
     private static final String FIND_USER_BY_LOGIN = "SELECT u FROM User u WHERE login =:login";
+
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -20,10 +23,12 @@ public class UserDaoImpl implements UserDao {
     public void addUser(User user) {
         entityManager.persist(user);
     }
+
     @Override
     public void editUser(User user) {
         entityManager.merge(user);
     }
+
     @Override
     public void deleteUser(User user) {
         user = entityManager.find(User.class, user.getId());
@@ -40,6 +45,7 @@ public class UserDaoImpl implements UserDao {
     public User getUser (Long id) {
         return entityManager.find(User.class, id);
     }
+
     @Override
     public User findByLogin (String login) {
         try {
