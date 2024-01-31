@@ -39,7 +39,7 @@ public class AdminController {
     @GetMapping("/edit")
     public String editUser(Model model, @RequestParam(value = "id", required = false) Long id) {
         model.addAttribute("user",userService.getUser(id));
-        model.addAttribute("roles",roleService.getListRoles(id));
+        model.addAttribute("rolesList",roleService.getListRoles(id));
         return "pages/edit";
     }
 

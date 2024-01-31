@@ -13,7 +13,6 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.stereotype.Component;
 import ru.javamentor.springsecurity.model.User;
 import ru.javamentor.springsecurity.service.UserService;
-import ru.javamentor.springsecurity.service.UserServiceImpl;
 
 import java.io.IOException;
 import java.util.Set;
@@ -30,6 +29,11 @@ public class SuccessUserHandler implements AuthenticationSuccessHandler {
 
     public SuccessUserHandler() {
     }
+
+//    @Autowired
+//    public SuccessUserHandler(UserService userService) {
+//        this.userService = userService;
+//    }
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)

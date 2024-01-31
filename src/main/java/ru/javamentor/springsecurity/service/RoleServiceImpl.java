@@ -44,4 +44,9 @@ public class RoleServiceImpl implements RoleService {
     public List<Role> getListRoles (Long id) {
         return roleDao.getListRoles(id);
     }
+
+    @Override
+    public List<Role> getAllRoles() {
+        return roleDao.getAllRoles();
+    }
 }

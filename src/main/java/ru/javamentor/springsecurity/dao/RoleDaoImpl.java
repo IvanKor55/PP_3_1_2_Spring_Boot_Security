@@ -12,7 +12,9 @@ import java.util.List;
 @Repository
 public class RoleDaoImpl implements RoleDao {
 
-    private static final String LIST_ROLES = "SELECT r FROM Role r left join fetch r.user u where u.id = :id";
+    private static final String LIST_ALL_ROLES = "SELECT r FROM Role r";
+
+    private static final String LIST_ROLES_BY_ID = "SELECT r FROM Role r left join fetch r.user u where u.id = :id";
 
     private static final String FIND_ROLE_BY_NAME = "SELECT r FROM Role r WHERE Authority =:authority";
 
@@ -31,7 +33,7 @@ public class RoleDaoImpl implements RoleDao {
 
     @Override
     public List<Role> getListRoles(Long id) {
-        Query<Role> query = (Query<Role>)  entityManager.createQuery(LIST_ROLES, Role.class)
+        Query<Role> query = (Query<Role>) entityManager.createQuery(LIST_ROLES_BY_ID, Role.class)
                 .setParameter("id", id);
         return query.getResultList();
     }
@@ -51,5 +53,10 @@ public class RoleDaoImpl implements RoleDao {
             System.out.println("NoResultException" + e);
             return null;
         }
+    }
+
+    @Override
+    public List<Role> getAllRoles() {
+        return entityManager.createQuery(LIST_ALL_ROLES, Role.class).getResultList();
     }
 }

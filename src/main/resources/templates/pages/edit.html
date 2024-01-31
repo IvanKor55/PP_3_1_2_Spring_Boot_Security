@@ -25,6 +25,14 @@
            name="rolesList"
            th:readonly="${not #authorization.expression('hasRole(''ROLE_ADMIN'')')}"
     />
+<!--    <label th:for="${#ids.next('roles')}">Roles: </label>-->
+<!--    <input type="checkbox" id="${#ids.next('roles')}"-->
+<!--           th:each="role : ${rolesList}"-->
+<!--           th:text="${role.getAuthority().replace('ROLE_', '')}"-->
+<!--           th:value="${role.getId()}"-->
+<!--           th:field="*{roles}"-->
+<!--           name="rolesList"-->
+<!--    />-->
     <br>
     <br>
     <label>Save</label>

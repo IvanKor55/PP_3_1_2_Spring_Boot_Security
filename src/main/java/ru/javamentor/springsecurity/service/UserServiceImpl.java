@@ -8,7 +8,10 @@ import ru.javamentor.springsecurity.model.Role;
 import ru.javamentor.springsecurity.model.User;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -32,6 +35,11 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void editUser(User user, String[] rolesList) {
+//        List<Role> roles = Arrays.stream(rolesList)
+//                .flatMap(roleNames -> Arrays.stream(roleNames.split(" ")))
+//                .map(roleName -> roleService.getRoleByName("ROLE_" + roleName))
+//                .filter(Objects::nonNull)
+//                .collect(Collectors.toList());
         List<Role> roles = new ArrayList<>();
         for (String roleName : rolesList) {
             String[] rolesListAdd = roleName.split(" ");
