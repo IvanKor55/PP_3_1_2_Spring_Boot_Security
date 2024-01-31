@@ -8,17 +8,15 @@ import ru.javamentor.springsecurity.model.Role;
 import ru.javamentor.springsecurity.model.User;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
+
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserDao userDao;
+    private final UserDao userDao;
 
-    private RoleService roleService;
+    private final RoleService roleService;
 
     @Autowired
     public UserServiceImpl(UserDao userDao, RoleService roleService) {

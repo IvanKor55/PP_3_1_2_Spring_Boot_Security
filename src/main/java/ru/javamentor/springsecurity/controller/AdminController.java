@@ -20,9 +20,9 @@ import static ru.javamentor.springsecurity.config.SuccessUserHandler.getLooginRo
 @RequestMapping("/admin")
 public class AdminController {
 
-    private UserService userService;
+    private final UserService userService;
 
-    private RoleService roleService;
+    private final RoleService roleService;
 
     @Autowired
     public AdminController(UserService userService, RoleService roleService) {
